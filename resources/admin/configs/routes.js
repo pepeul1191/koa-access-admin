@@ -38,7 +38,7 @@ var router = Backbone.Router.extend({
   },
   default: function() {
     //window.location.href = BASE_URL + "error/access/404";
-    window.location.href = BASE_URL + 'admin/#/';
+    window.location.href = BASE_URL + '#/';
   },
   // user
   index: function(){
