@@ -1,11 +1,11 @@
 const Router = require('koa-trie-router');
-var constants = require('../../config/constants');
-var helpers = require('../../config/helpers');
-var contents = require('../../config/contents');
-var loginStaticHelper = require('../helpers/login_static_helper');
-var middlewares = require('../../config/middlewares');
-var sessionRequiredFalse = require('../middlewares/session_required_false');
-var CSRFValidateForm = require('../helpers/csrf_validation_form');
+const constants = require('../../config/constants');
+const helpers = require('../../config/helpers');
+const contents = require('../../config/contents');
+const loginStaticHelper = require('../helpers/login_static_helper');
+const middlewares = require('../../config/middlewares');
+const sessionRequiredFalse = require('../middlewares/session_required_false');
+const CSRFValidateForm = require('../helpers/csrf_validation_form');
 
 let router = new Router();
 
