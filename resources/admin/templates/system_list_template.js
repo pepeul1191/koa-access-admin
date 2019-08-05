@@ -20,13 +20,13 @@ var SystemListTemplate = _.template(`
           <tr>
             <td><%= systems[i].name %></td>
             <td class="text-center">
-              <a href="<%= base_url %>admin/#/system/edit/<%= systems[i]._id %>">
+              <a href="<%= base_url %>#/system/edit/<%= systems[i]._id %>">
                 <i class="fa fa-pencil row-icon" aria-hidden="true"></i>
               </a>
-              <a href="<%= base_url %>admin/#/system/permission/<%= systems[i]._id %>">
+              <a href="<%= base_url %>#/system/permission/<%= systems[i]._id %>">
                 <i class="fa fa-list row-icon" aria-hidden="true"></i>
               </a>
-              <a href="<%= base_url %>admin/#/system/menu/<%= systems[i]._id %>">
+              <a href="<%= base_url %>#/system/menu/<%= systems[i]._id %>">
                 <i class="fa fa-chevron-right row-icon" aria-hidden="true"></i>
               </a>
               <a class="delete-row" system_id="<%= systems[i]._id %>">
@@ -50,7 +50,7 @@ var SystemListTemplate = _.template(`
               <% } %>
             </th>
             <th colspan="1">
-              <a href="<%= base_url %>admin/#/system/create" class="btn btn-primary pull-right">
+              <a href="<%= base_url %>#/system/create" class="btn btn-primary pull-right">
                 <i class="fa fa-plus btn-icon" aria-hidden="true"></i>
                 Agregar Registro
               </a>

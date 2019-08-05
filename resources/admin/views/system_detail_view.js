@@ -102,7 +102,7 @@ var SystemDetailView = Backbone.View.extend({
 		$('.modal-backdrop').addClass('d-none');
 		$(this.modalContainer).addClass('d-none');
 		// redirect
-		window.location.href = BASE_URL + 'admin/#/systems';
+		window.location.href = BASE_URL + '#/systems';
 	},
 	keydownHandler: function(e){
 		switch(e.which){
