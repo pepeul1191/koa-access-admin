@@ -2,6 +2,7 @@ const Router = require('koa-trie-router');
 const mime = require('mime-types');
 const fs = require('fs-extra')
 const helpers = require('../../config/helpers');
+const random = require('../helpers/random');
 const User = require('../models/user');
 
 let router = new Router();
@@ -65,7 +66,7 @@ router.post('/user/picture/upload', [
     try {
       var {path, name, type} = ctx.request.files.picture_file;
       var file_extension = mime.extension(type);
-      name = helpers.random(30) + '.' + file_extension;
+      name = random(30) + '.' + file_extension;
       await fs.copy(path, `public/uploads/${name}`);
       resp = name;
     } catch (err) {

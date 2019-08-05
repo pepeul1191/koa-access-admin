@@ -27,10 +27,10 @@ render(app, {
 // middlewares
 app.use(middlewares.preResponse());
 app.use(middlewares.showLogs());
-// forward routes
-bootstrap(app);
 // error 500 handler
 app.use(middlewares.internalErrorHandler);
+// forward routes
+bootstrap(app);
 // error 404 handler
 app.use(middlewares.errorNotFoundHandler);
 // port

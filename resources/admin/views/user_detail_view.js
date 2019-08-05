@@ -134,7 +134,7 @@ var UserDetailView = Backbone.View.extend({
 		$('.modal-backdrop').addClass('d-none');
 		$(this.modalContainer).addClass('d-none');
 		// redirect
-		window.location.href = BASE_URL + 'admin/#/';
+		window.location.href = BASE_URL + '#/';
 	},
 	keydownHandler: function(e){
 		switch(e.which){
