@@ -11,7 +11,7 @@ module.exports = {
   },
   middlewares: {
     csrf : true,
-    session : false,
+    session : true,
     session_admin : true,
     logs : true,
     csrf_check: true, 

@@ -1,6 +1,7 @@
 const Koa = require('koa');
 const static = require('koa-static');
 const render = require('koa-ejs');
+const session = require('koa-session');
 const path = require('path');
 const koaBody = require('koa-body');
 // export configs
@@ -11,6 +12,7 @@ const bootstrap = require('./config/bootstrap');
 // new app
 const app = new Koa();
 app.use(koaBody(constants.uploader_options));
+app.use(session(constants.session, app));
 app.keys = ['rnbfpzfuywmiwtfrrlomwlzlhdxfxjnfifzvkrloobswyoifkt'];
 // static files
 app.use(static(__dirname + '/public'));
