@@ -103,4 +103,12 @@ router.get('/login/reset_password', [
   }
 ]);
 
+router.get('/login/close', [
+  // sessionRequiredFalse, 
+  async (ctx, next) => {
+    ctx.session = null;
+    return await ctx.redirect('/login');
+  }
+]);
+
 exports.routes = router.middleware();
