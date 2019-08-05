@@ -19,13 +19,13 @@ var UserListTemplate = _.template(`
             <td><%= users[i].user %></td>
             <td><%= users[i].email %></td>
             <td class="text-center">
-              <a href="<%= base_url %>admin/#/user/edit/<%= users[i]._id %>">
+              <a href="<%= base_url %>#/user/edit/<%= users[i]._id %>">
                 <i class="fa fa-pencil row-icon" aria-hidden="true"></i>
               </a>
-              <a href="<%= base_url %>admin/#/user/mail/<%= users[i]._id %>">
+              <a href="<%= base_url %>#/user/mail/<%= users[i]._id %>">
                 <i class="fa fa-envelope row-icon" aria-hidden="true"></i>
               </a>
-              <a href="<%= base_url %>admin/#/user/<%= users[i]._id %>/system">
+              <a href="<%= base_url %>#/user/<%= users[i]._id %>/system">
                 <i class="fa fa-desktop row-icon" aria-hidden="true"></i>
               </a>
             </td>
@@ -46,7 +46,7 @@ var UserListTemplate = _.template(`
               <% } %>
             </th>
             <th colspan="1">
-              <a href="<%= base_url %>admin/#/user/create" class="btn btn-primary pull-right">
+              <a href="<%= base_url %>#/user/create" class="btn btn-primary pull-right">
                 <i class="fa fa-plus btn-icon" aria-hidden="true"></i>
                 Agregar Registro
               </a>
