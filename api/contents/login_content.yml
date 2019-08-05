@@ -13,3 +13,4 @@ sp:
     email_pending: Activación por correo pendiente
     inexistant: Usuario y/o constraña no coinciden
     other: Ups, ocurrió un problema
+  login_user_not_found: 'Usuario y contraseña no coinciden'

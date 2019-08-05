@@ -2,13 +2,15 @@ const Koa = require('koa');
 const static = require('koa-static');
 const render = require('koa-ejs');
 const path = require('path');
+const koaBody = require('koa-body');
 // export configs
 // const sockets = require('./config/sockets');
-// const constants = require('./config/constants');
+const constants = require('./config/constants');
 const middlewares = require('./config/middlewares');
 const bootstrap = require('./config/bootstrap');
 // new app
 const app = new Koa();
+app.use(koaBody(constants.uploader_options));
 app.keys = ['rnbfpzfuywmiwtfrrlomwlzlhdxfxjnfifzvkrloobswyoifkt'];
 // static files
 app.use(static(__dirname + '/public'));
