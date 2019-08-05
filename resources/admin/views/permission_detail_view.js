@@ -108,7 +108,7 @@ var PermissionDetailView = Backbone.View.extend({
 		$('.modal-backdrop').addClass('d-none');
 		$(this.modalContainer).addClass('d-none');
 		// redirect
-		window.location.href = BASE_URL + 'admin/#/system/permission/' +  this.system_id;
+		window.location.href = BASE_URL + '#/system/permission/' +  this.system_id;
 	},
 	keydownHandler: function(e){
 		switch(e.which){
