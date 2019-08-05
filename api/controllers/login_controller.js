@@ -73,15 +73,14 @@ router.get('/login/sign_in', [
       constants: constants.data,
       title: contents.titles()[lang]['login_sign_in'],
       helpers: helpers,
-      csss: loginHelper.indexCss(),
-      jss: loginHelper.indexJs(),
-      message: '',
-      message_status: '',
+      csss: loginStaticHelper.indexCss(),
+      jss: loginStaticHelper.indexJs(),
+      message: 'Función de disponible',
+      message_status: 'color-error',
       contents: contents.get('login')[lang],
       lang: lang,
     };
-    // await ctx.render('login/sign_in', locals);
-    await ctx.redirect('/error/access/404');
+    await ctx.render('login/sign_in', locals);
   }
 ]);
 
@@ -93,10 +92,10 @@ router.get('/login/reset_password', [
       constants: constants.data,
       title: contents.titles()[lang]['login_reset'],
       helpers: helpers,
-      csss: loginHelper.indexCss(),
-      jss: loginHelper.indexJs(),
-      message: '',
-      message_status: '',
+      csss: loginStaticHelper.indexCss(),
+      jss: loginStaticHelper.indexJs(),
+      message: 'Función de disponible',
+      message_status: 'color-error',
       contents: contents.get('login')[lang],
       lang: lang,
     };

@@ -1,11 +1,13 @@
 sp:
   form_title: Iniciar Sesión
   form_title_reset: Restablecer Contraseña
+  form_title_sign_in: Crear Cuenta
   placeholder_user: Usuario
   placeholder_password: Contraseña
   placeholder_email: Correo Electrónico
   button_login: Ingresar
-  button_reset: Enviar Contraseña
+  button_reset: Enviar Correo
+  button_sign_in: Registrarse
   sign_in: Registrarse
   login: Ingresar
   reset: Olvidó su Contraseña

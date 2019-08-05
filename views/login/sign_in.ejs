@@ -1,29 +1,32 @@
 <%- include('../partials/blank_header.ejs') %>
-<form class="form-signin" action="<%= constants.base_url %>login" method="post">
+<form class="form-signin" action="<%= constants.base_url %>login/sign_in" method="post">
   <!--
   <a href="<%= constants.base_url %>">
     <img src="<%= constants.static_url %>assets/img/logo.png" height="130" width="240" class="mb-4 brand" alt="Logo-Login">
   </a>
   -->
-  <h1 class="h3 mb-3 font-weight-normal"><%= contents.form_title %></h1>
+  <h1 class="h3 mb-3 font-weight-normal"><%= contents.form_title_sign_in %></h1>
   <input type="hidden" name="<%= constants.csrf.key %>" value="<%= constants.csrf.secret %>">
   <span class="extraData"></span>
   <!--USER -->
-  <label for="user" class="sr-only">Email address</label>
-  <input type="text" id="user" class="form-control" placeholder="<%= contents.placeholder_user %>" required="" autofocus="" name="user">
+  <label for="user" class="sr-only">user</label>
+  <input type="text" id="user"  disabled class="form-control" placeholder="<%= contents.placeholder_user %>" required="" autofocus="" name="user">
+  <!--EMAIL -->
+  <label for="email" class="sr-only">email</label>
+  <input type="email" id="email" disabled class="form-control" placeholder="<%= contents.placeholder_email %>" required="" autofocus="" name="email">
   <!--PASS -->
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" id="inputPassword" class="form-control" placeholder="<%= contents.placeholder_password %>" required="" name="pass">
+  <label for="inputPassword" class="sr-only">password</label>
+  <input type="password" id="inputPassword" disabled class="form-control" placeholder="<%= contents.placeholder_password %>" required="" name="pass">
   <!--MESSAGE-->
   <p class="<%= message_status %> message" style="margin-top:10px;" id="login-message"><%= message %></p>
   <!--BUTTON -->
-  <button class="btn btn-lg btn-primary btn-block" type="submit">
-    <%= contents.button %>
+  <button class="btn btn-lg btn-primary btn-block" type="submit" disabled>
+    <%= contents.button_sign_in %>
   </button>
   <!--FooTER LOGIN NAV -->
   <div class="link-login">
-    <a class="" href="<%= constants.base_url %>login/sign_in">
-      <%= contents.sign_in %>
+    <a class="" href="<%= constants.base_url %>login">
+      <%= contents.login %>
     </a>
     <a id="forgotpassword" class=" pull-right" href="<%= constants.base_url %>login/reset_password">
       <%= contents.reset %>

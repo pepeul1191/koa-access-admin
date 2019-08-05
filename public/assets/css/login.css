@@ -108,7 +108,7 @@ h1 {
   font-size: 18px !important;
 }
 
-button, input[type=text], input[type=password] {
+button, input[type=text], input[type=password], input[type=email] {
   font-size: 12px !important;
 }
 
