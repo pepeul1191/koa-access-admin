@@ -4,6 +4,9 @@ var UserSystemListTemplate = _.template(`
   <h2 class="page-tittle">Gestión de Sistemas del Usuario</h2>
   <br>
   <div class="row">
+    <div class="col-md-12">
+      <label id="message"></label>
+    </div>
     <div class="col-md-6">
       <table class="table table-striped">
         <thead>

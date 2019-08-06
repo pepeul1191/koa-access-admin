@@ -8,7 +8,7 @@ var UserSystemListView = Backbone.View.extend({
 	el: '#workspace',
 	initialize: function(){
     this.userSystemService = userSystemService;
-		this.message = '#mensaje';
+		this.message = '#message';
     this.events = this.events || {};
     this.userId = 'E';
 	},
@@ -29,13 +29,23 @@ var UserSystemListView = Backbone.View.extend({
   systemCheckClick:function(event){
     var system_id = event.target.getAttribute('system_id');
     var checked = $(event.target).is(':checked');
+    var response = {};
     if(checked){
       // add system to user
-      this.userSystemService.addSystem(this.userId, system_id);
+      response = this.userSystemService.addSystem(this.userId, system_id);
     }else{
       // remove system to user
-      this.userSystemService.removeSystem(this.userId, system_id);
+      response = this.userSystemService.removeSystem(this.userId, system_id);
     }
+    if(response.status == 200){
+      $(this.message).html(response.message);
+			$(this.message).addClass('text-success');
+			$(this.message).removeClass('text-danger');
+		}else{
+			$(this.message).html(response.message);
+			$(this.message).removeClass('text-success');
+			$(this.message).addClass('text-danger');
+		}
   }
 });
 

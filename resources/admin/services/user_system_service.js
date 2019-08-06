@@ -44,7 +44,7 @@ var UserSystemService = {
       },
       async: false,
       success: function(data){
-				resp.message = JSON.parse(data);
+				resp.message = 'Se ha agregado la asociación con el sistema';
       },
       error: function(xhr, status, error){
         console.error(error);
@@ -71,7 +71,7 @@ var UserSystemService = {
       },
       async: false,
       success: function(data){
-				resp.message = JSON.parse(data);
+				resp.message = 'Se ha eliminado la asociación con el sistema';
       },
       error: function(xhr, status, error){
         console.error(error);
