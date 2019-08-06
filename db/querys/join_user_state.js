@@ -1,7 +1,5 @@
-### query
+// PARAMS: user, pass
 
-
-```
 db.users.aggregate([
   {
     $match: {
@@ -35,20 +33,15 @@ db.users.aggregate([
     }
   }
 ]);
-```
-
-### result
-
-Array
 
 
-```
-/* 1 */
+// RESULT: documents
+
+/*
 {
     "_id" : ObjectId("5d3a08bf0f10e27b3462488d"),
     "user" : "Gerianna",
     "email" : "gbrabendern@va.gov",
     "state" : "active"
 }
-
-```
+*/
