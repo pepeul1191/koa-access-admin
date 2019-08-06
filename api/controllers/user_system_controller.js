@@ -63,7 +63,34 @@ router.post('/user/system/add', [
     // response
     ctx.set('Content-Type', 'text/html; charset=utf-8');
     ctx.status = status;
-    ctx.body = 'XD';
+    ctx.body = 'ok';
+  }
+]);
+
+router.post('/user/system/remove', [
+  //middlewares.sessionRequiredFalse,
+  async (ctx, next) => {
+    var resp = {};
+    var status = 200;
+    var user_id = ctx.request.body.user_id;
+    var system_id = ctx.request.body.system_id;
+    // get user document with user_id
+    var user = await User.findOne({
+      _id: user_id
+    }).exec();
+    var user_systems = user.systems;
+    // if system already added to user, change status
+    for(var i = 0; i < user_systems.length; i++){
+      if(user_systems[i].system_id == system_id){
+        system_exist = true;
+        user.systems[i].status = false;
+        await user.save();
+      }
+    }
+    // response
+    ctx.set('Content-Type', 'text/html; charset=utf-8');
+    ctx.status = status;
+    ctx.body = 'ok';
   }
 ]);
 
