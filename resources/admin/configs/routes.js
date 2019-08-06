@@ -74,6 +74,7 @@ var router = Backbone.Router.extend({
     if(this.userSystemListView == null){
       this.userSystemListView = new UserSystemListView();
     }
+    this.userSystemListView.userId = id;
     this.userSystemListView.render(id);
   },
   // permission

@@ -18,7 +18,8 @@ module.exports = db.mongoose.model('users',
     state_id:  db.Schema.Types.ObjectId,
     systems: [{
       system_id: db.Schema.Types.ObjectId,
-      permissions_id: [db.Schema.Types.ObjectId],
+      permissions_ids: [db.Schema.Types.ObjectId],
+      status: Boolean,
     }],
   })
 );
