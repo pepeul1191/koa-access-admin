@@ -17,7 +17,10 @@ router.get('/user/system/list', [
     for(var i = 0; i < all_systems.length; i++){
       var exist = false;
       for(var j = 0; j < user_systems.length; j++){
-        if(all_systems[i].system_id.toString() === user_systems[j].system_id.toString()){
+        if(
+          all_systems[i].system_id.toString() == user_systems[j].system_id.toString() 
+          && user_systems[j].status == true
+        ){
           exist = true;
         }
       }

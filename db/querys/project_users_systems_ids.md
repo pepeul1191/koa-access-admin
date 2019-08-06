@@ -11,7 +11,7 @@ db.users.aggregate([
     $project:{
        _id : 0 ,
       system_id : '$systems.system_id',
-      exist: '1',
+      exist: '$systems.status',
     }
   },
 ]);

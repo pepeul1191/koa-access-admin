@@ -23,7 +23,7 @@ module.exports = function(user_id){
       $project:{
          _id : 0 ,
         system_id : '$systems.system_id',
-        // exist: '1',
+        status: '$systems.status',
       }
     },
   ])
