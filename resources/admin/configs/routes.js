@@ -5,6 +5,7 @@ import 'popper.js';
 // views
 import UserListView from '../views/user_list_view';
 import UserDetailView from '../views/user_detail_view';
+import UserSystemListView from '../views/user_system_list_view';
 import SystemListView from '../views/system_list_view';
 import SystemDetailView from '../views/system_detail_view';
 import PermissionListView from '../views/permission_list_view';
@@ -13,6 +14,7 @@ import PermissionDetailView from '../views/permission_detail_view';
 var router = Backbone.Router.extend({
   userListView: null,
   userDetailView: null,
+  userSystemListView: null,
   systemListView: null,
   systemDetailView: null,
   permissionListView: null,
@@ -25,6 +27,8 @@ var router = Backbone.Router.extend({
     'user/create': 'userCreate',
     'user/edit/:id' : 'userEdit',
     'user/mail/:id' : 'userMail',
+    // user system
+    'user/:id/system' : 'userSystem',
     // system
     'systems' : 'systems',
     'system/create': 'systemCreate',
@@ -65,6 +69,12 @@ var router = Backbone.Router.extend({
   },
   userDelete: function(id){
     alert('delete' + id);
+  },
+  userSystem: function(id){
+    if(this.userSystemListView == null){
+      this.userSystemListView = new UserSystemListView();
+    }
+    this.userSystemListView.render(id);
   },
   // permission
   permissions: function(id){

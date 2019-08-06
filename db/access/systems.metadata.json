@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"chat_db.systems"}],"uuid":"61d276c193f94ba88f4e93775f014660"}
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"access.systems"}],"uuid":"1c847ed68f9b48c195ff97c4a1b343d1"}
