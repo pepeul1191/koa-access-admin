@@ -1,6 +1,7 @@
 const Router = require('koa-trie-router');
 const Permission = require('../models/permission');
 const System = require('../models/system');
+const listSystemPermissions = require('../helpers/aggr_list_systems_permissions');
 const db = require('../../config/database');
 
 let router = new Router();
@@ -12,12 +13,10 @@ router.get('/permission/list', [
     var status = 200;
     var page = parseInt(ctx.request.query.page);
     var step = parseInt(ctx.request.query.step);
+    var system_id = ctx.request.query.system_id;
     var skip = (page - 1) * step;
     // get permissions in range of page
-    resp.permissions = await Permission.find({}).select({ 
-      name: 1, 
-      key: 2, 
-    }).skip(skip).limit(step).exec();
+    resp.permissions = await listSystemPermissions(system_id);
     // get count of permissions
     resp.count = await Permission.countDocuments({});
     // response
@@ -86,14 +85,11 @@ router.post('/permission/save', [
           resp.action_executed = 'create';
           resp._id = new_permission._id;
           // add permission to system document
-          await System.findOneAndUpdate(
-            permission_json.system_id,
-            {
-              $push:{
-                permissions_id: new_permission._id,
-              }
-            }
-          ).exec();
+          var system = await System.findOne({
+            _id: permission_json.system_id
+          }).exec();
+          system.permissions_id.push(new_permission._id);
+          await system.save();
         }
       }else{
         // edit permission

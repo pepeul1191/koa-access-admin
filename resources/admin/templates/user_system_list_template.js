@@ -28,8 +28,8 @@ var UserSystemListTemplate = _.template(`
               <% } %>
             </td>
             <td class="text-center">
-              <a href="<%= base_url %>#/user/<%= user_id %>/system_id/<%= systems[i].system_id %>">
-                <i class="fa fa-list row-icon" aria-hidden="true"></i>
+              <a href="#" />
+                <i class="fa fa-list row-icon user-system-permissions" aria-hidden="true" user_id="<%= user_id %>" system_id="<%= systems[i].system_id %>"></i>
               </a>
             </td>
           </tr>

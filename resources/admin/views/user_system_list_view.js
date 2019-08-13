@@ -3,17 +3,20 @@ import $ from 'jquery';
 
 import UserSystemListTemplate from '../templates/user_system_list_template';
 import userSystemService from '../services/user_system_service';
+import UserSystemPermissionService from '../services/user_system_permission_service';
 
 var UserSystemListView = Backbone.View.extend({
 	el: '#workspace',
 	initialize: function(){
     this.userSystemService = userSystemService;
+    this.userSystemPermissionService = UserSystemPermissionService;
 		this.message = '#message';
     this.events = this.events || {};
     this.userId = 'E';
 	},
 	events: {
     'click .system-check': 'systemCheckClick',
+    'click .user-system-permissions': 'userSystemPermssionsClick',
   },
   render: function(userId){
     this.userId = userId;
@@ -26,7 +29,7 @@ var UserSystemListView = Backbone.View.extend({
 			})
 		);
   },
-  systemCheckClick:function(event){
+  systemCheckClick: function(event){
     var system_id = event.target.getAttribute('system_id');
     var checked = $(event.target).is(':checked');
     var response = {};
@@ -46,7 +49,12 @@ var UserSystemListView = Backbone.View.extend({
 			$(this.message).removeClass('text-success');
 			$(this.message).addClass('text-danger');
 		}
-  }
+  },
+  userSystemPermssionsClick: function(event){
+    var system_id = event.target.getAttribute('system_id');
+    var user_id = event.target.getAttribute('user_id');
+    this.userSystemPermissionService.list(user_id, system_id);
+  },
 });
 
 export default UserSystemListView;

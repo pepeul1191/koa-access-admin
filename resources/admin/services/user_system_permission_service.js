@@ -1,17 +1,16 @@
 import $ from 'jquery';
 
-var PermissionService = {
-  list: function(page, step, system_id){
+var UserSystemPermissionService = {
+  list: function(user_id, system_id){
     var resp = {
       status: 200, 
       message: ''
     };
     $.ajax({
       type: 'GET',
-      url: BASE_URL + 'permission/list',
+      url: BASE_URL + 'user/permission',
       data: { 
-        step: step,
-        page: page,
+        user_id: user_id,
         system_id: system_id,
       },
       headers: {
@@ -29,68 +28,17 @@ var PermissionService = {
     });
     return resp;
   },
-  get: function(_id){
-    var resp = {
-      status: 200, 
-      message: ''
-    };
-    $.ajax({
-      type: 'GET',
-      url: BASE_URL + 'permission/get',
-      data: { 
-        _id: _id,
-      },
-      headers: {
-        [CSRF_KEY]: CSRF,
-      },
-      async: false,
-      success: function(data){
-				resp.message = JSON.parse(data);
-      },
-      error: function(xhr, status, error){
-        console.error(error);
-				resp.message = JSON.parse(xhr.responseText);
-				resp.status = xhr.status;
-      }
-    });
-    return resp;
-  },
-  save: function(data){
+  /*
+  addSystem: function(user_id, system_id){
     var resp = {
       status: 200, 
       message: ''
     };
     $.ajax({
       type: 'POST',
-      url: BASE_URL + 'permission/save',
+      url: BASE_URL + 'user/system/add',
       data: { 
-        data: data,
-      },
-      headers: {
-        [CSRF_KEY]: CSRF,
-      },
-      async: false,
-      success: function(data){
-				resp.message = JSON.parse(data);
-      },
-      error: function(xhr, status, error){
-        console.error(error);
-				resp.message = JSON.parse(xhr.responseText);
-        resp.status = xhr.status;
-      }
-    });
-    return resp;
-  },
-  delete: function(system_id, _id){
-    var resp = {
-      status: 200, 
-      message: ''
-    };
-    $.ajax({
-      type: 'POST',
-      url: BASE_URL + 'permission/delete',
-      data: { 
-        _id: _id,
+        user_id: user_id,
         system_id: system_id,
       },
       headers: {
@@ -98,16 +46,44 @@ var PermissionService = {
       },
       async: false,
       success: function(data){
-				resp.message = JSON.parse(data);
+				resp.message = 'Se ha agregado la asociación con el sistema';
       },
       error: function(xhr, status, error){
         console.error(error);
 				resp.message = JSON.parse(xhr.responseText);
-        resp.status = xhr.status;
+				resp.status = 500;
       }
     });
     return resp;
   },
+  removeSystem: function(user_id, system_id){
+    var resp = {
+      status: 200, 
+      message: ''
+    };
+    $.ajax({
+      type: 'POST',
+      url: BASE_URL + 'user/system/remove',
+      data: { 
+        user_id: user_id,
+        system_id: system_id,
+      },
+      headers: {
+        [CSRF_KEY]: CSRF,
+      },
+      async: false,
+      success: function(data){
+				resp.message = 'Se ha eliminado la asociación con el sistema';
+      },
+      error: function(xhr, status, error){
+        console.error(error);
+				resp.message = JSON.parse(xhr.responseText);
+				resp.status = 500;
+      }
+    });
+    return resp;
+  },
+  */
 };
 
-export default PermissionService;
+export default UserSystemPermissionService;

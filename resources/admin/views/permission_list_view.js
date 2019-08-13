@@ -10,6 +10,7 @@ var PermissionListView = Backbone.View.extend({
 	initialize: function(){
     this.permissionService = PermissionService;
 		this.message = '#message';
+		this.system_id = null;
 		this.events = this.events || {};
 		this.page_size = 20;
 		this.page = 1;
@@ -23,7 +24,7 @@ var PermissionListView = Backbone.View.extend({
     'click .delete-row': 'delete',
   },
   render: function(){
-		var resp = this.permissionService.list(this.page, this.page_size);
+		var resp = this.permissionService.list(this.page, this.page_size, this.system_id);
 		this.pages = Math.ceil(resp.message.count / this.page_size);
     $(this.el).html(
       PermissionListTemplate({
@@ -38,7 +39,7 @@ var PermissionListView = Backbone.View.extend({
 	},
 	goBegin: function(){
 		this.page = 1;
-		var resp = this.permissionService.list(this.page, this.page_size);
+		var resp = this.permissionService.list(this.page, this.page_size, this.system_id);
 		this.pages = Math.ceil(resp.message.count / this.page_size);
     $(this.el).html(
       PermissionListTemplate({
@@ -46,13 +47,14 @@ var PermissionListView = Backbone.View.extend({
 				base_url: BASE_URL,
 				page: this.page,
         pages: this.pages,
-        message: '',
+				message: '',
+				system_id: this.system_id,
 			})
 		);
 	},
 	goPrevious: function(){
 		this.page = this.page - 1;
-		var resp = this.permissionService.list(this.page, this.page_size);
+		var resp = this.permissionService.list(this.page, this.page_size, this.system_id);
 		this.pages = Math.ceil(resp.message.count / this.page_size);
     $(this.el).html(
       PermissionListTemplate({
@@ -66,7 +68,7 @@ var PermissionListView = Backbone.View.extend({
 	},
 	goNext: function(){
 		this.page = this.page + 1;
-		var resp = this.permissionService.list(this.page, this.page_size);
+		var resp = this.permissionService.list(this.page, this.page_size, this.system_id);
 		this.pages = Math.ceil(resp.message.count / this.page_size);
     $(this.el).html(
       PermissionListTemplate({
@@ -80,7 +82,7 @@ var PermissionListView = Backbone.View.extend({
 	},
 	goLast: function(){
 		this.page = this.pages;
-		var resp = this.permissionService.list(this.page, this.page_size);
+		var resp = this.permissionService.list(this.page, this.page_size, this.system_id);
     $(this.el).html(
       PermissionListTemplate({
         permissions: resp.message.permissions,
