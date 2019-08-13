@@ -142,16 +142,13 @@ router.post('/permission/delete', [
     try {
       var _id = ctx.request.body._id;
       var system_id = ctx.request.body.system_id;
-      await Permission.findOneAndDelete(_id);
+      await Permission.findOneAndDelete(db.mongoose.Types.ObjectId(_id));
       // delete permission from array on permissions in system
-      await System.findOneAndUpdate(
-        system_id,
-        {
-          $pull:{
-            permissions_id: db.mongoose.Types.ObjectId(_id),
-          }
-        }
-      ).exec();
+      var system = await System.findOne({
+        _id: system_id
+      }).exec();
+      system.permissions_id.pull(_id);
+      await system.save();
       // response
       resp.action_executed = 'deleted';
       resp.data = 'Permiso eliminado';

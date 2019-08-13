@@ -94,7 +94,7 @@ var PermissionListView = Backbone.View.extend({
 		);
   },
   delete: function(event){
-    var _id = event.target.parentElement.getAttribute('permission_id');
+    var _id = event.target.getAttribute('permission_id');
     var resp = this.permissionService.delete(this.system_id, _id);
     var tbody = event.target.parentElement.parentElement.parentElement.parentElement;
 		var td = event.target.parentElement.parentElement.parentElement;

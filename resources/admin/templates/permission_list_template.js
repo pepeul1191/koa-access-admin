@@ -22,11 +22,11 @@ var PermissionListTemplate = _.template(`
             <td><%= permissions[i].name %></td>
             <td><%= permissions[i].key %></td>
             <td class="text-center">
-              <a href="<%= base_url %>#/permission/<%= system_id %>/edit/<%= permissions[i]._id %>">
+              <a href="<%= base_url %>#/permission/<%= system_id %>/edit/<%= permissions[i].permission_id %>">
                 <i class="fa fa-pencil row-icon" aria-hidden="true"></i>
               </a>
-              <a class="delete-row" permission_id="<%= permissions[i]._id %>">
-                <i class="fa fa-times row-icon" aria-hidden="true"></i>
+              <a class="delete-row" permission_id="<%= permissions[i].permission_id %>">
+                <i class="fa fa-times row-icon" aria-hidden="true" permission_id="<%= permissions[i].permission_id %>"></i>
               </a>
             </td>
           </tr>
